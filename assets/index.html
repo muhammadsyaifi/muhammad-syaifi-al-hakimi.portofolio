@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Syaifi Al Hakimi — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Pirata+One&family=Fraunces:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <span class="loader-percent" id="loaderPercent">0<small>%</small></span>
+  </div>
+</div>
+
+<svg style="display:none">
+  <defs>
+    <symbol id="sparkle" viewBox="0 0 100 100">
+      <path d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="grain"></div>
+
+<!-- GANTI src di bawah dengan file lagu Anda: taruh file musik di folder assets/ (misal assets/musik.mp3) -->
+<audio id="bgMusic" src="assets/musik.mp3" loop preload="none"></audio>
+
+<header>
+  <div class="logo">
+    <svg class="spark"><use href="#sparkle"/></svg>
+    MSAH
+  </div>
+  <nav id="mainNav">
+    <ul>
+      <li><a href="#beranda" class="nav-link" data-id="Beranda" data-en="Home">Beranda</a></li>
+      <li><a href="#tentang" class="nav-link" data-id="Tentang" data-en="About">Tentang</a></li>
+      <li><a href="#keahlian" class="nav-link" data-id="Keahlian" data-en="Skills">Keahlian</a></li>
+      <li><a href="#pengalaman" class="nav-link" data-id="Pengalaman" data-en="Experience">Pengalaman</a></li>
+      <li><a href="#project" class="nav-link" data-id="Project" data-en="Projects">Project</a></li>
+      <li><a href="#kontak" class="nav-link" data-id="Kontak" data-en="Contact">Kontak</a></li>
+    </ul>
+  </nav>
+  <div class="nav-tools">
+    <button class="music-btn" id="musicBtn" aria-label="Putar musik" data-id-label="Putar musik" data-en-label="Play music">
+      <svg class="music-icon icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l10 6-10 6V6z"/></svg>
+      <svg class="music-icon icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5v14M16 5v14"/></svg>
+      <span class="music-bars"><span></span><span></span><span></span></span>
+    </button>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" data-lang="id" class="active">ID</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+  <!-- ===================== BERANDA ===================== -->
+  <section id="beranda" class="hero">
+    <div class="sparkle-cluster floaty" style="top:120px; right:8vw; animation:float 7s ease-in-out infinite;">
+      <svg class="spark s1"><use href="#sparkle"/></svg>
+      <svg class="spark s2"><use href="#sparkle"/></svg>
+      <svg class="spark s3"><use href="#sparkle"/></svg>
+    </div>
+
+    <div class="hero-tagbadge" data-id="Portofolio" data-en="Portfolio">Portofolio</div>
+
+    <h1 class="hero-title">
+      <span class="ghost">Muhammad</span>
+      <span class="solid">Syaifi Al Hakimi<span class="accent">dev.</span></span>
+    </h1>
+    <div class="hero-underline"></div>
+
+    <p class="hero-sub" data-id="Mahasiswa Informatika di Universitas Teknokrat Indonesia, membangun solusi digital lewat kode — dari antarmuka web hingga logika pemrograman." data-en="Informatics student at Universitas Teknokrat Indonesia, building digital solutions through code — from web interfaces to programming logic.">
+      Mahasiswa Informatika di Universitas Teknokrat Indonesia, membangun solusi
+      digital lewat kode — dari antarmuka web hingga logika pemrograman.
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">Programming</span>
+      <span class="tag">Software Development</span>
+      <span class="tag">Problem Solving</span>
+    </div>
+
+    <div class="btn-row">
+      <a href="#project" class="btn btn-solid" data-id="Lihat Project" data-en="View Projects">Lihat Project</a>
+      <a href="#kontak" class="btn btn-outline" data-id="Hubungi Saya" data-en="Contact Me">Hubungi Saya</a>
+    </div>
+  </section>
+
+ <!-- ===================== MARQUEE STRIP ===================== -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span>MUHAMMAD SYAIFI AL HAKIMI</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span data-id="INFORMATIKA &middot; TEKNOKRAT INDONESIA" data-en="INFORMATICS &middot; TEKNOKRAT INDONESIA">INFORMATIKA &middot; TEKNOKRAT INDONESIA</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>PROGRAMMING &amp; SOFTWARE DEVELOPMENT</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>MUHAMMAD SYAIFI AL HAKIMI</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span data-id="INFORMATIKA &middot; TEKNOKRAT INDONESIA" data-en="INFORMATICS &middot; TEKNOKRAT INDONESIA">INFORMATIKA &middot; TEKNOKRAT INDONESIA</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>PROGRAMMING &amp; SOFTWARE DEVELOPMENT</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+    </div>
+    <div class="marquee-group">
+      <span>MUHAMMAD SYAIFI AL HAKIMI</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span data-id="INFORMATIKA &middot; TEKNOKRAT INDONESIA" data-en="INFORMATICS &middot; TEKNOKRAT INDONESIA">INFORMATIKA &middot; TEKNOKRAT INDONESIA</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>PROGRAMMING &amp; SOFTWARE DEVELOPMENT</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>MUHAMMAD SYAIFI AL HAKIMI</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span data-id="INFORMATIKA &middot; TEKNOKRAT INDONESIA" data-en="INFORMATICS &middot; TEKNOKRAT INDONESIA">INFORMATIKA &middot; TEKNOKRAT INDONESIA</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+      <span>PROGRAMMING &amp; SOFTWARE DEVELOPMENT</span>
+      <svg class="spark"><use href="#sparkle"/></svg>
+    </div>
+  </div>
+</div>
+
+  <!-- ===================== TENTANG ===================== -->
+  <section id="tentang">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label" data-id="// Profil" data-en="// Profile">// Profil</div>
+        <h2 data-id="Tentang Saya" data-en="About Me">Tentang Saya</h2>
+      </div>
+    </div>
+
+    <div class="id-card">
+      <div class="holo-badge floaty" style="animation:float 6s ease-in-out infinite;">
+        <svg class="spark"><use href="#sparkle"/></svg>
+      </div>
+
+      <!-- GANTI DENGAN FOTO ANDA: taruh file foto Anda di folder assets/ dengan nama foto-profil.jpg (atau ubah nama file di src). Foto akan muncul otomatis begitu file-nya ada. -->
+      <div class="id-photo">
+        <img src="assets/foto-profil.jpg" alt="Foto Muhammad Syaifi Al Hakimi" onload="this.style.display='block'" onerror="this.style.display='none'">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.174C3.05 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.8-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.174 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-3.732 0 2.192 2.192 0 00-1.736 1.039l-.822 1.316z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"/></svg>
+      </div>
+
+      <div>
+        <h3 class="id-name">Muhammad Syaifi<br>Al Hakimi</h3>
+        <p class="id-role" data-id="Mahasiswa Informatika dengan passion di bidang teknologi dan pengembangan digital, berfokus pada pemrograman dan software development." data-en="Informatics student with a passion for technology and digital development, focused on programming and software development.">Mahasiswa Informatika dengan passion di bidang teknologi dan pengembangan digital, berfokus pada pemrograman dan software development.</p>
+
+        <div class="id-table">
+          <div><b data-id="Program Studi" data-en="Major">Program Studi</b><span data-id="Informatika" data-en="Informatics">Informatika</span></div>
+          <div><b data-id="Universitas" data-en="University">Universitas</b><span>Teknokrat Indonesia</span></div>
+          <div><b data-id="Fokus" data-en="Focus">Fokus</b><span>Software Dev.</span></div>
+        </div>
+
+        <ul class="id-contact">
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <span>muhammadsyaifialhakimi@gmail.com</span>
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            <span>Lampung, Indonesia</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-copy">
+      <p data-id="Saya Muhammad Syaifi Al Hakimi, mahasiswa Informatika di Universitas Teknokrat Indonesia yang memiliki passion dalam bidang teknologi dan pengembangan digital. Saya berfokus pada pengembangan kemampuan di bidang pemrograman, software development, dan pemecahan masalah melalui teknologi." data-en="I am Muhammad Syaifi Al Hakimi, an Informatics student at Universitas Teknokrat Indonesia with a passion for technology and digital development. I focus on developing my skills in programming, software development, and solving problems through technology.">Saya Muhammad Syaifi Al Hakimi, mahasiswa Informatika di Universitas Teknokrat Indonesia yang memiliki passion dalam bidang teknologi dan pengembangan digital. Saya berfokus pada pengembangan kemampuan di bidang pemrograman, software development, dan pemecahan masalah melalui teknologi.</p>
+      <p data-id="Dengan rasa ingin tahu yang tinggi dan semangat untuk terus berkembang, saya siap menghadapi tantangan serta menciptakan karya digital yang inovatif." data-en="With high curiosity and a drive to keep growing, I'm ready to take on challenges and create innovative digital work.">Dengan rasa ingin tahu yang tinggi dan semangat untuk terus berkembang, saya siap menghadapi tantangan serta menciptakan karya digital yang inovatif.</p>
+    </div>
+  </section>
+
+  <!-- ===================== KEAHLIAN ===================== -->
+  <section id="keahlian">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label" data-id="// Kemampuan Teknis" data-en="// Technical Skills">// Kemampuan Teknis</div>
+        <h2 data-id="Keahlian" data-en="Skills">Keahlian</h2>
+      </div>
+    </div>
+
+    <div class="skills-card">
+      <div class="skills-frame">
+        <!-- GANTI DENGAN FOTO ANDA: taruh file foto Anda di folder assets/ dengan nama foto-profil.jpg (atau ubah nama file di src), lalu ubah display:none menjadi display:block -->
+        <div class="skills-photo">
+          <div class="skills-photo-inner">
+            <img src="assets/foto-skill.jpg" alt="Foto Muhammad Syaifi Al Hakimi" onload="this.style.display='block'" onerror="this.style.display='none'">
+            <svg class="spark"><use href="#sparkle"/></svg>
+            <span data-id="FOTO<br>ANDA" data-en="YOUR<br>PHOTO" data-html="true">FOTO<br>ANDA</span>
+          </div>
+        </div>
+
+        <span class="skills-sub">// Frontend</span>
+        <h3 class="skills-title">Skills</h3>
+
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div class="tech-icon">HTML</div>
+            <div class="tech-info">
+              <b>HTML</b>
+              <div class="tech-bar"><span style="width:60%;"></span></div>
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">CSS</div>
+            <div class="tech-info">
+              <b>CSS</b>
+              <div class="tech-bar"><span style="width:45%;"></span></div>
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">JS</div>
+            <div class="tech-info">
+              <b>JavaScript</b>
+              <div class="tech-bar"><span style="width:43%;"></span></div>
+            </div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">C++</div>
+            <div class="tech-info">
+              <b>C++</b>
+              <div class="tech-bar"><span style="width:70%;"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PENGALAMAN ===================== -->
+  <section id="pengalaman">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label" data-id="// Rekam Jejak" data-en="// Track Record">// Rekam Jejak</div>
+        <h2 data-id="Pengalaman" data-en="Experience">Pengalaman</h2>
+      </div>
+    </div>
+
+    <div class="exp-wrap">
+      <div class="exp-vert">EXPERIENCE</div>
+      <div class="exp-cards">
+      <div class="exp-card">
+        <div class="exp-year-tag">2023</div>
+        <h3 data-id="Pelatihan Vokasi Siswa" data-en="Student Vocational Training">Pelatihan Vokasi Siswa</h3>
+        <span class="exp-org">Program Smart School Lampung Berjaya</span>
+        <p data-id="Mengikuti Pelatihan Vokasi Siswa dalam Pembuatan 3D Printing Digital untuk mendukung Program Smart School Lampung Berjaya 2023, memperdalam pemahaman proses desain hingga produksi model digital tiga dimensi." data-en="Took part in Student Vocational Training in Digital 3D Printing to support the Smart School Lampung Berjaya 2023 Program, deepening understanding of the process from design to producing three-dimensional digital models.">Mengikuti Pelatihan Vokasi Siswa dalam Pembuatan 3D Printing Digital untuk mendukung Program Smart School Lampung Berjaya 2023, memperdalam pemahaman proses desain hingga produksi model digital tiga dimensi.</p>
+        <div class="exp-dash"></div>
+        <div class="exp-foot">
+          <span data-id="3D Printing Digital &middot; Smart School Program" data-en="Digital 3D Printing &middot; Smart School Program">3D Printing Digital &middot; Smart School Program</span>
+          <div class="barcode"></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-year-tag">2023—2025</div>
+        <h3 data-id="Organisasi" data-en="Organization">Organisasi</h3>
+        <span class="exp-org" data-id="Pramuka &amp; OSIS" data-en="Scout &amp; Student Council">Pramuka &amp; OSIS</span>
+        <ul class="exp-list">
+          <li data-id="Sekretaris Umum PA, Organisasi Pramuka, periode 2023–2024" data-en="General Secretary (PA), Scout Organization, 2023–2024 period">Sekretaris Umum PA, Organisasi Pramuka, periode 2023–2024</li>
+          <li data-id="Pimpinan Sangga, periode 2023–2024" data-en="Sangga (Scout Unit) Leader, 2023–2024 period">Pimpinan Sangga, periode 2023–2024</li>
+          <li data-id="Ketua Divisi Acara, OSIS, periode 2024–2025" data-en="Head of Events Division, Student Council (OSIS), 2024–2025 period">Ketua Divisi Acara, OSIS, periode 2024–2025</li>
+        </ul>
+        <div class="exp-dash"></div>
+        <div class="exp-foot">
+          <span data-id="Kepemimpinan &middot; Kepramukaan &middot; OSIS" data-en="Leadership &middot; Scouting &middot; Student Council">Kepemimpinan &middot; Kepramukaan &middot; OSIS</span>
+          <div class="barcode"></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-year-tag">2023—2024</div>
+        <h3 data-id="Prestasi" data-en="Achievements">Prestasi</h3>
+        <span class="exp-org" data-id="Pramuka &amp; Kompetisi" data-en="Scout &amp; Competitions">Pramuka &amp; Kompetisi</span>
+        <ul class="exp-list">
+          <li data-id="Juara 1 Karya Tepat Guna, Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023" data-en="1st Place, Appropriate Technology Work, 62nd Scout Anniversary Camp at Sub-district level, 2023">Juara 1 Karya Tepat Guna, Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023</li>
+          <li data-id="Juara 1 Joget Komando tingkat Penegak di Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023" data-en="1st Place, Joget Komando (Command Dance), Penegak level, 62nd Scout Anniversary Camp at Sub-district level, 2023">Juara 1 Joget Komando tingkat Penegak di Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023</li>
+          <li data-id="Juara 1 LKBB Variasi, tahun 2023 tingkat Penegak di Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023" data-en="1st Place, Varied Drill Formation (LKBB), 2023, Penegak level, 62nd Scout Anniversary Camp at Sub-district level, 2023">Juara 1 LKBB Variasi, tahun 2023 tingkat Penegak di Perkemahan HUT Pramuka ke-62 tingkat Kecamatan, 2023</li>
+          <li data-id="Peserta Perkemahan Bakti Satuan Karya Adhyasta Pemilu, Pesisir Barat 2024" data-en="Participant, Adhyasta Pemilu Scout Corps Service Camp, Pesisir Barat 2024">Peserta Perkemahan Bakti Satuan Karya Adhyasta Pemilu, Pesisir Barat 2024</li>
+          <li data-id="Juara 3 Video tingkat Provinsi, tema &ldquo;Awasi Pilkada 2024&rdquo; di acara Perkemahan Bakti Satuan Karya Adhyasta Pemilu, Pesisir Barat 2024" data-en="3rd Place, Provincial-level Video Competition, theme &ldquo;Awasi Pilkada 2024&rdquo;, at the Adhyasta Pemilu Scout Corps Service Camp, Pesisir Barat 2024">Juara 3 Video tingkat Provinsi, tema &ldquo;Awasi Pilkada 2024&rdquo; di acara Perkemahan Bakti Satuan Karya Adhyasta Pemilu, Pesisir Barat 2024</li>
+          <li data-id="Juara 1 Joget Komando tingkat Kabupaten, ajang SSC (Scout Skill Competition) 2024" data-en="1st Place, Joget Komando (Command Dance), District level, SSC (Scout Skill Competition) 2024">Juara 1 Joget Komando tingkat Kabupaten, ajang SSC (Scout Skill Competition) 2024</li>
+        </ul>
+        <div class="exp-dash"></div>
+        <div class="exp-foot">
+          <span data-id="Kompetisi &middot; Kepramukaan &middot; Penghargaan" data-en="Competitions &middot; Scouting &middot; Awards">Kompetisi &middot; Kepramukaan &middot; Penghargaan</span>
+          <div class="barcode"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT ===================== -->
+  <section id="project">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label" data-id="// Karya" data-en="// Works">// Karya</div>
+        <h2 data-id="Project" data-en="Projects">Project</h2>
+      </div>
+    </div>
+    <!-- GANTI SETIAP KOTAK DI BAWAH DENGAN PROJECT ANDA -->
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="tape"></div>
+        <svg class="spark"><use href="#sparkle"/></svg>
+        <b>+ Project 1</b>
+        <small data-id="Judul &amp; deskripsi di sini" data-en="Title &amp; description here">Judul &amp; deskripsi di sini</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAK ===================== -->
+  <section id="kontak">
+    <div class="sec-head">
+      <div>
+        <div class="sec-label" data-id="// Hubungi" data-en="// Get in Touch">// Hubungi</div>
+        <h2 data-id="Kontak" data-en="Contact">Kontak</h2>
+      </div>
+    </div>
+
+    <div class="contact-wrap">
+      <!-- GANTI DATA DI BAWAH DENGAN INFORMASI KONTAK ANDA -->
+      <ul class="contact-list">
+        <li>
+          <svg class="spark"><use href="#sparkle"/></svg>
+          <div><b>Email</b><span>muhammadsyaifialhakimi@gmail.com</span></div>
+        </li>
+        <li>
+          <svg class="spark"><use href="#sparkle"/></svg>
+          <div><b data-id="Telepon / WhatsApp" data-en="Phone / WhatsApp">Telepon / WhatsApp</b><span>+62 898-0565-372</span></div>
+        </li>
+        <li>
+          <svg class="spark"><use href="#sparkle"/></svg>
+          <div><b data-id="Lokasi" data-en="Location">Lokasi</b><span>Lampung, Indonesia</span></div>
+        </li>
+        <li>
+          <svg class="spark"><use href="#sparkle"/></svg>
+          <div><b>LinkedIn / GitHub / Instagram</b><span>@username-anda</span></div>
+        </li>
+      </ul>
+
+      <div class="form-card">
+        <form class="form" id="contactForm">
+          <div>
+            <label for="nama" data-id="Nama" data-en="Name">Nama</label>
+            <input type="text" id="nama" name="nama" placeholder="Nama Anda" data-id-ph="Nama Anda" data-en-ph="Your Name" required>
+          </div>
+          <div>
+            <label for="emailPengirim">Email</label>
+            <input type="email" id="emailPengirim" name="email" placeholder="email@anda.com" required>
+          </div>
+          <div>
+            <label for="pesan" data-id="Pesan" data-en="Message">Pesan</label>
+            <textarea id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini..." data-id-ph="Tulis pesan Anda di sini..." data-en-ph="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" style="align-self:flex-start;" data-id="Kirim Pesan" data-en="Send Message">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="spark"><use href="#sparkle"/></svg>
+  <span data-id="©Muhammad Syaifi Al Hakimi" data-en="© Muhammad Syaifi Al Hakimi">© Muhammad Syaifi Al Hakimi</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
