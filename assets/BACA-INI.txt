@@ -1,0 +1,10 @@
+Taruh gambar-gambar portofolio Anda di folder ini, misalnya:
+
+- foto-profil.jpg   -> foto diri Anda (dipakai di bagian Tentang & Keahlian)
+- project-1.jpg     -> gambar/screenshot project 1
+- project-2.jpg
+- project-3.jpg
+
+Setelah menaruh file di sini, buka index.html dan:
+1. Ganti src="assets/foto-profil.jpg" jika nama file foto Anda berbeda.
+2. Ubah style="display:none" pada tag <img> menjadi style="display:block".
