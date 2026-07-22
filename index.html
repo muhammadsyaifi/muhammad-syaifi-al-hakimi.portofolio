@@ -131,14 +131,14 @@
 
   <!-- ===================== TENTANG ===================== -->
   <section id="tentang">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div>
         <div class="sec-label" data-id="// Profil" data-en="// Profile">// Profil</div>
         <h2 data-id="Tentang Saya" data-en="About Me">Tentang Saya</h2>
       </div>
     </div>
 
-    <div class="id-card">
+    <div class="id-card reveal">
       <div class="holo-badge floaty" style="animation:float 6s ease-in-out infinite;">
         <svg class="spark"><use href="#sparkle"/></svg>
       </div>
@@ -157,6 +157,7 @@
           <div><b data-id="Program Studi" data-en="Major">Program Studi</b><span data-id="Informatika" data-en="Informatics">Informatika</span></div>
           <div><b data-id="Universitas" data-en="University">Universitas</b><span>Teknokrat Indonesia</span></div>
           <div><b data-id="Fokus" data-en="Focus">Fokus</b><span>Software Dev.</span></div>
+          <div><b data-id="Pendidikan Sebelumnya" data-en="Previous Education">Pendidikan Sebelumnya</b><span>SMAN 1 Kasui</span></div>
         </div>
 
         <ul class="id-contact">
@@ -172,29 +173,39 @@
       </div>
     </div>
 
-    <div class="about-copy">
+    <div class="about-copy reveal">
       <p data-id="Saya Muhammad Syaifi Al Hakimi, mahasiswa Informatika di Universitas Teknokrat Indonesia yang memiliki passion dalam bidang teknologi dan pengembangan digital. Saya berfokus pada pengembangan kemampuan di bidang pemrograman, software development, dan pemecahan masalah melalui teknologi." data-en="I am Muhammad Syaifi Al Hakimi, an Informatics student at Universitas Teknokrat Indonesia with a passion for technology and digital development. I focus on developing my skills in programming, software development, and solving problems through technology.">Saya Muhammad Syaifi Al Hakimi, mahasiswa Informatika di Universitas Teknokrat Indonesia yang memiliki passion dalam bidang teknologi dan pengembangan digital. Saya berfokus pada pengembangan kemampuan di bidang pemrograman, software development, dan pemecahan masalah melalui teknologi.</p>
       <p data-id="Dengan rasa ingin tahu yang tinggi dan semangat untuk terus berkembang, saya siap menghadapi tantangan serta menciptakan karya digital yang inovatif." data-en="With high curiosity and a drive to keep growing, I'm ready to take on challenges and create innovative digital work.">Dengan rasa ingin tahu yang tinggi dan semangat untuk terus berkembang, saya siap menghadapi tantangan serta menciptakan karya digital yang inovatif.</p>
+      <p data-id="Perjalanan saya di dunia teknologi dimulai dari rasa penasaran sederhana: bagaimana sebuah tampilan website bisa berubah menjadi aplikasi yang benar-benar berfungsi. Dari situ saya mulai mempelajari HTML, CSS, dan JavaScript secara otodidak, lalu memperdalamnya lewat perkuliahan Informatika, sambil terus melatih logika pemrograman lewat bahasa C++." data-en="My journey into technology started with a simple curiosity: how a website's appearance turns into an application that actually works. From there I began teaching myself HTML, CSS, and JavaScript, then deepened that foundation through my Informatics coursework while continuing to sharpen programming logic through C++.">Perjalanan saya di dunia teknologi dimulai dari rasa penasaran sederhana: bagaimana sebuah tampilan website bisa berubah menjadi aplikasi yang benar-benar berfungsi. Dari situ saya mulai mempelajari HTML, CSS, dan JavaScript secara otodidak, lalu memperdalamnya lewat perkuliahan Informatika, sambil terus melatih logika pemrograman lewat bahasa C++.</p>
+      <p data-id="Selain aktif di bangku kuliah, pengalaman berorganisasi di Pramuka dan OSIS mengajarkan saya arti kerja sama tim, tanggung jawab, dan manajemen waktu — nilai-nilai yang saya bawa ketika mengerjakan project, baik individu maupun kelompok. Bagi saya, kode yang baik bukan cuma soal berhasil dijalankan, tapi juga rapi, mudah dipahami, dan bisa dikembangkan lebih lanjut." data-en="Beyond lectures, my experience organizing in Scouts and the Student Council taught me the value of teamwork, responsibility, and time management — values I carry into every project, whether solo or in a team. To me, good code isn't just about running successfully, but also being clean, understandable, and easy to build upon.">Selain aktif di bangku kuliah, pengalaman berorganisasi di Pramuka dan OSIS mengajarkan saya arti kerja sama tim, tanggung jawab, dan manajemen waktu — nilai-nilai yang saya bawa ketika mengerjakan project, baik individu maupun kelompok. Bagi saya, kode yang baik bukan cuma soal berhasil dijalankan, tapi juga rapi, mudah dipahami, dan bisa dikembangkan lebih lanjut.</p>
+      <p data-id="Ke depannya, saya ingin terus memperdalam pengembangan web dan software, mengeksplorasi praktik-praktik terbaik dalam industri, serta membuka ruang untuk berkolaborasi dalam project nyata yang memberi dampak, sekecil apa pun itu." data-en="Going forward, I want to keep deepening my web and software development skills, explore industry best practices, and stay open to collaborating on real projects that make an impact, however small.">Ke depannya, saya ingin terus memperdalam pengembangan web dan software, mengeksplorasi praktik-praktik terbaik dalam industri, serta membuka ruang untuk berkolaborasi dalam project nyata yang memberi dampak, sekecil apa pun itu.</p>
     </div>
   </section>
 
   <!-- ===================== KEAHLIAN ===================== -->
   <section id="keahlian">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div>
         <div class="sec-label" data-id="// Kemampuan Teknis" data-en="// Technical Skills">// Kemampuan Teknis</div>
         <h2 data-id="Keahlian" data-en="Skills">Keahlian</h2>
       </div>
     </div>
 
-    <div class="skills-card">
+    <div class="skills-card reveal">
       <div class="skills-frame">
-        <!-- GANTI DENGAN FOTO ANDA: taruh file foto Anda di folder assets/ dengan nama foto-profil.jpg (atau ubah nama file di src), lalu ubah display:none menjadi display:block -->
+        <!-- Badge dekoratif menggantikan foto: cincin teks berputar + ikon di tengah -->
         <div class="skills-photo">
           <div class="skills-photo-inner">
-            <img src="assets/foto-skill.jpg" alt="Foto Muhammad Syaifi Al Hakimi" onload="this.style.display='block'" onerror="this.style.display='none'">
-            <svg class="spark"><use href="#sparkle"/></svg>
-            <span data-id="FOTO<br>ANDA" data-en="YOUR<br>PHOTO" data-html="true">FOTO<br>ANDA</span>
+            <svg class="skills-ring" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path id="skillsRingPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
+              </defs>
+              <text>
+                <textPath href="#skillsRingPath" startOffset="0%" data-id="SOFTWARE DEVELOPER • PROBLEM SOLVER • SOFTWARE DEVELOPER • PROBLEM SOLVER • " data-en="SOFTWARE DEVELOPER • PROBLEM SOLVER • SOFTWARE DEVELOPER • PROBLEM SOLVER • ">SOFTWARE DEVELOPER • PROBLEM SOLVER • SOFTWARE DEVELOPER • PROBLEM SOLVER • </textPath>
+              </text>
+            </svg>
+            <svg class="spark skills-center-spark"><use href="#sparkle"/></svg>
+            <span data-id="SEDANG<br>MEMBANGUN" data-en="CURRENTLY<br>BUILDING" data-html="true">SEDANG<br>MEMBANGUN</span>
           </div>
         </div>
 
@@ -237,7 +248,7 @@
 
   <!-- ===================== PENGALAMAN ===================== -->
   <section id="pengalaman">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div>
         <div class="sec-label" data-id="// Rekam Jejak" data-en="// Track Record">// Rekam Jejak</div>
         <h2 data-id="Pengalaman" data-en="Experience">Pengalaman</h2>
@@ -247,7 +258,7 @@
     <div class="exp-wrap">
       <div class="exp-vert">EXPERIENCE</div>
       <div class="exp-cards">
-      <div class="exp-card">
+      <div class="exp-card reveal">
         <div class="exp-year-tag">2023</div>
         <h3 data-id="Pelatihan Vokasi Siswa" data-en="Student Vocational Training">Pelatihan Vokasi Siswa</h3>
         <span class="exp-org">Program Smart School Lampung Berjaya</span>
@@ -259,7 +270,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card reveal" style="transition-delay:0.12s;">
         <div class="exp-year-tag">2023—2025</div>
         <h3 data-id="Organisasi" data-en="Organization">Organisasi</h3>
         <span class="exp-org" data-id="Pramuka &amp; OSIS" data-en="Scout &amp; Student Council">Pramuka &amp; OSIS</span>
@@ -275,7 +286,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card reveal" style="transition-delay:0.24s;">
         <div class="exp-year-tag">2023—2024</div>
         <h3 data-id="Prestasi" data-en="Achievements">Prestasi</h3>
         <span class="exp-org" data-id="Pramuka &amp; Kompetisi" data-en="Scout &amp; Competitions">Pramuka &amp; Kompetisi</span>
@@ -299,7 +310,7 @@
 
   <!-- ===================== PROJECT ===================== -->
   <section id="project">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div>
         <div class="sec-label" data-id="// Karya" data-en="// Works">// Karya</div>
         <h2 data-id="Project" data-en="Projects">Project</h2>
@@ -307,7 +318,7 @@
     </div>
     <!-- GANTI SETIAP KOTAK DI BAWAH DENGAN PROJECT ANDA -->
     <div class="project-grid">
-      <div class="project-card">
+      <div class="project-card reveal">
         <div class="tape"></div>
         <svg class="spark"><use href="#sparkle"/></svg>
         <b>+ Project 1</b>
@@ -318,7 +329,7 @@
 
   <!-- ===================== KONTAK ===================== -->
   <section id="kontak">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div>
         <div class="sec-label" data-id="// Hubungi" data-en="// Get in Touch">// Hubungi</div>
         <h2 data-id="Kontak" data-en="Contact">Kontak</h2>
@@ -327,7 +338,7 @@
 
     <div class="contact-wrap">
       <!-- GANTI DATA DI BAWAH DENGAN INFORMASI KONTAK ANDA -->
-      <ul class="contact-list">
+      <ul class="contact-list reveal">
         <li>
           <svg class="spark"><use href="#sparkle"/></svg>
           <div><b>Email</b><span>muhammadsyaifialhakimi@gmail.com</span></div>
@@ -346,7 +357,7 @@
         </li>
       </ul>
 
-      <div class="form-card">
+      <div class="form-card reveal" style="transition-delay:0.12s;">
         <form class="form" id="contactForm">
           <div>
             <label for="nama" data-id="Nama" data-en="Name">Nama</label>

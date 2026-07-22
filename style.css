@@ -109,6 +109,21 @@
     .floaty{ animation:none !important; }
   }
 
+  /* ===== SCROLL REVEAL: elemen muncul saat discroll ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(42px);
+    transition:opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+    will-change:opacity, transform;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none; opacity:1; transform:none; }
+  }
+
   /* ===== NAV ===== */
 header{
     position: fixed;
@@ -444,9 +459,27 @@ nav a{
     gap:6px; text-align:center; padding:14px;
     overflow:hidden;
   }
-  .skills-photo-inner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; display:none; }
-  .skills-photo-inner .spark{ width:30px; color:var(--white); opacity:0.85; }
-  .skills-photo-inner span{ font-family:var(--font-mono); font-size:0.6rem; color:var(--grey); line-height:1.4; }
+  .skills-ring{
+    position:absolute; inset:0; width:100%; height:100%;
+    color:rgba(245,243,238,0.55);
+    animation:skillsRingSpin 22s linear infinite;
+    transform-origin:50% 50%;
+  }
+  .skills-ring text, .skills-ring textPath{
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:0.05em;
+    fill:currentColor;
+  }
+  @keyframes skillsRingSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .skills-ring{ animation:none !important; }
+  }
+  .skills-center-spark{ width:34px; color:var(--white); opacity:0.9; position:relative; z-index:1; }
+  .skills-photo-inner span{ font-family:var(--font-mono); font-size:0.6rem; color:var(--grey); line-height:1.4; position:relative; z-index:1; }
   .skills-title{
     font-family:var(--font-black-display);
     font-style:italic;
