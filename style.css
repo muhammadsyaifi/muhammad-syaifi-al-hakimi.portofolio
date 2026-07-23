@@ -369,61 +369,29 @@ nav a{
     border-radius:20px;
     padding:36px;
     display:grid;
-    grid-template-columns:220px 1fr;
+    grid-template-columns:260px 1fr;
     gap:36px;
     box-shadow:0 30px 60px rgba(0,0,0,0.45);
   }
   .id-photo{
     position:relative;
-    aspect-ratio:687/1000; /* samakan dgn rasio gambar bingkai kartu depan/belakang */
-    border-radius:14px;
-    overflow:visible; /* biar bayangan kartu & efek holo tidak terpotong */
-  }
-
-  /* ===== KARTU 2 SISI (depan/belakang) yg bisa dibalik seperti kartu lanyard asli ===== */
-  .card-inner{
-    position:absolute; inset:0;
-    transform-style:preserve-3d;
-    will-change:transform;
-    border-radius:14px;
-  }
-  .card-face{
-    position:absolute; inset:0;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
+    aspect-ratio:687/1000;
     border-radius:14px;
     overflow:hidden;
     box-shadow:0 10px 26px rgba(0,0,0,0.35);
-  }
-  .card-back{ transform:rotateY(180deg); }
-  .card-frame{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    pointer-events:none;
-    -webkit-user-drag:none;
   }
   .card-photo{
     position:absolute; inset:0;
     width:100%; height:100%;
     object-fit:cover;
     display:none;
+    pointer-events:none;
+    -webkit-user-drag:none;
   }
-
-  /* ===== LANYARD: kartu foto bisa digoyang/diseret seperti gantungan ID card ===== */
-  .lanyard-zone{
-    display:flex;
-    flex-direction:column;
-    transform-origin:50% 0%;
-    cursor:grab;
-    touch-action:none;
-    will-change:transform;
-  }
-  .lanyard-zone.grabbing{ cursor:grabbing; }
-  .lanyard-zone .id-photo{ margin-top:10px; perspective:1400px; }
 
   /* ===== HOLOGRAM: efek foil/hologram pada foto profil mengikuti gerakan mouse ===== */
   .id-photo{
+    perspective:1400px;
     transform-style:preserve-3d;
     transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
     will-change:transform;
@@ -457,56 +425,6 @@ nav a{
   .id-photo.holo-active .holo-shine{ opacity:.65; }
   @media (prefers-reduced-motion: reduce){
     .holo-shine{ display:none; }
-  }
-  .lanyard-string{
-    align-self:center;
-    width:26px; height:38px; /* tinggi dasar; akan diubah live oleh JS supaya tali terlihat memanjang saat ditarik/mantul */
-    background:linear-gradient(90deg, #050505 0%, #1c1c1c 12%, #161616 50%, #1c1c1c 88%, #050505 100%);
-    border-radius:6px 6px 3px 3px;
-    position:relative;
-    pointer-events:none;
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.04),
-      0 3px 6px rgba(0,0,0,0.4);
-  }
-  /* jahitan tipis di kedua sisi strap, seperti pada tali lanyard kanvas asli */
-  .lanyard-string::before,
-  .lanyard-string::after{
-    content:"";
-    position:absolute; top:6px; bottom:8px; width:1px;
-    background-image:repeating-linear-gradient(180deg, rgba(255,255,255,0.32) 0 3px, transparent 3px 7px);
-  }
-  .lanyard-string::before{ left:5px; }
-  .lanyard-string::after{ right:5px; }
-
-  /* ===== HARDWARE LANYARD: D-ring + kait swivel (metal), murni CSS/SVG ===== */
-  .lanyard-hardware{
-    align-self:center;
-    width:28px;
-    margin-bottom:-21px; /* tarik kartu naik supaya ujung kait terlihat masuk ke lubang kartu */
-    pointer-events:none;
-    filter:drop-shadow(0 3px 4px rgba(0,0,0,0.5));
-    position:relative;
-    z-index:2;
-  }
-  .lanyard-hardware svg{ width:100%; height:auto; display:block; overflow:visible; }
-
-  /* lubang/grommet metal di bagian atas kartu, tempat ujung kait terlihat masuk */
-  .card-grommet{
-    position:absolute; top:9px; left:50%; transform:translateX(-50%);
-    width:18px; height:18px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #f4f4f4, #b9b9b9 55%, #767676 100%);
-    box-shadow:
-      0 0 0 2px rgba(0,0,0,0.55),
-      inset 0 0 0 2px rgba(0,0,0,0.35),
-      0 1px 2px rgba(0,0,0,0.5);
-    z-index:1; pointer-events:none;
-  }
-  .card-grommet::after{
-    content:""; position:absolute; inset:5px; border-radius:50%; background:#0a0a0a;
-  }
-  @media (prefers-reduced-motion: reduce){
-    .lanyard-zone{ cursor:default; }
   }
 
   .id-name{ font-size:clamp(1.8rem, 3vw, 2.6rem); line-height:0.95; margin-bottom:10px; }
@@ -768,8 +686,7 @@ nav a{
   /* ===== RESPONSIVE ===== */
   @media (max-width:900px){
     .id-card{ grid-template-columns:1fr; }
-    .id-photo{ max-width:280px; }
-    .lanyard-zone{ max-width:280px; margin:0 auto; }
+    .id-photo{ max-width:260px; margin:0 auto; }
     .project-grid{ grid-template-columns:1fr; }
     .contact-wrap{ grid-template-columns:1fr; }
     .exp-wrap{ grid-template-columns:1fr; }

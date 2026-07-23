@@ -145,39 +145,8 @@
 
       <!-- GANTI DENGAN FOTO ANDA: taruh file foto Anda di folder assets/ dengan nama foto-profil.jpg (atau ubah nama file di src). Foto akan muncul otomatis begitu file-nya ada. -->
       <!-- Sisi belakang kartu (saat dibalik) pakai assets/lanyard-card-back.png -->
-      <div class="lanyard-zone" id="lanyardZone">
-        <div class="lanyard-string" id="lanyardString"></div>
-        <div class="lanyard-hardware" aria-hidden="true">
-          <svg viewBox="0 0 40 74">
-            <defs>
-              <linearGradient id="lanyardMetal" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#f4f4f4"/>
-                <stop offset="35%" stop-color="#c9c9c9"/>
-                <stop offset="55%" stop-color="#8a8a8a"/>
-                <stop offset="100%" stop-color="#eaeaea"/>
-              </linearGradient>
-            </defs>
-            <!-- D-ring -->
-            <rect x="10" y="2" width="20" height="15" rx="7.5" fill="none" stroke="url(#lanyardMetal)" stroke-width="4"/>
-            <!-- swivel barrel -->
-            <rect x="15" y="14" width="10" height="8" rx="2" fill="url(#lanyardMetal)"/>
-            <!-- badan kait (center-align dgn D-ring di atas) -->
-            <rect x="12" y="21" width="16" height="32" rx="6" fill="url(#lanyardMetal)"/>
-            <!-- ujung kait berbentuk U simetris, pas di tengah -->
-            <path d="M13 51 v12 a7 7 0 0 0 14 0 v-12" fill="none" stroke="url(#lanyardMetal)" stroke-width="4.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="id-photo" id="lanyardCard">
-          <span class="card-grommet"></span>
-          <div class="card-inner" id="cardInner">
-            <div class="card-face card-front">
-              <img class="card-photo" src="assets/foto-profil.jpg" alt="Foto Muhammad Syaifi Al Hakimi" draggable="false" onload="this.style.display='block'" onerror="this.style.display='none'">
-            </div>
-            <div class="card-face card-back">
-              <img class="card-frame" src="assets/lanyard-card-back.png" alt="" draggable="false">
-            </div>
-          </div>
-        </div>
+      <div class="id-photo" id="lanyardCard">
+        <img class="card-photo" src="assets/foto-profil.jpg" alt="Foto Muhammad Syaifi Al Hakimi" draggable="false" onload="this.style.display='block'" onerror="this.style.display='none'">
       </div>
 
       <div>
