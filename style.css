@@ -935,3 +935,105 @@ img{
 @media (max-width:768px){
   .music-btn{ width:32px; height:32px; }
 }
+
+/* ===== TAMBAHAN ANIMASI: biar semua elemen kerasa hidup, gak flat ===== */
+
+/* logo berputar pelan */
+.logo .spark{ animation:sparkSpin 6s linear infinite; }
+@keyframes sparkSpin{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
+}
+
+/* badge "Portofolio" di hero goyang pelan */
+.hero-tagbadge{ animation:badgeWiggle 4s ease-in-out infinite; }
+@keyframes badgeWiggle{
+  0%,100%{ transform:rotate(-2deg) translateY(0); }
+  50%{ transform:rotate(2deg) translateY(-4px); }
+}
+
+/* tag chip: melambung & miring saat disentuh */
+.tag{
+  transition:transform 0.25s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.tag:hover{
+  transform:translateY(-4px) rotate(-2deg);
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--white);
+}
+
+/* tombol: naik dikit saat hover, mengecil saat ditekan */
+.btn:hover{ transform:translateY(-3px); }
+.btn:active{ transform:translateY(0) scale(0.97); }
+
+/* titik kecil berdenyut di depan label section */
+.sec-label::before{
+  content:""; display:inline-block; width:8px; height:8px; margin-right:8px;
+  background:var(--accent); border-radius:50%;
+  animation:dotPulse 1.6s ease-in-out infinite;
+  vertical-align:middle;
+}
+@keyframes dotPulse{
+  0%,100%{ transform:scale(1); opacity:1; }
+  50%{ transform:scale(1.4); opacity:0.6; }
+}
+
+/* sel id-table nyala dikit saat disentuh */
+.id-table div{ transition:background 0.25s ease, transform 0.25s ease; }
+.id-table div:hover{ background:rgba(216,31,38,0.08); transform:translateY(-2px); }
+
+/* kartu edukasi (pendidikan) terangkat & sedikit membesar saat disentuh */
+.edu-pop{ transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease; }
+.edu-pop:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 44px rgba(0,0,0,0.45); }
+
+/* holo-badge muter warnanya pelan-pelan */
+.holo-badge{ animation:float 6s ease-in-out infinite, holoSpin 10s linear infinite; }
+@keyframes holoSpin{
+  from{ filter:hue-rotate(0deg); }
+  to{ filter:hue-rotate(360deg); }
+}
+
+/* foto skills mengambang pelan */
+.skills-photo{ animation:float 7s ease-in-out infinite; }
+
+/* ikon tech melambung & miring saat kartunya dihover */
+.tech-icon{ transition:box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+.tech-item:hover .tech-icon{ transform:translateY(-4px) rotate(-6deg); border-color:var(--accent); }
+
+/* label tahun di kartu pengalaman goyang pelan terus-terusan */
+.exp-year-tag{ animation:tagWiggle 3.4s ease-in-out infinite; }
+@keyframes tagWiggle{
+  0%,100%{ transform:rotate(3deg); }
+  50%{ transform:rotate(7deg) translateY(-2px); }
+}
+
+/* thumbnail project zoom saat card dihover */
+.project-thumb{ transition:transform 0.4s ease; }
+.project-card:hover .project-thumb{ transform:scale(1.06); }
+
+/* baris kontak geser dikit + spark ikut muter saat dihover */
+.contact-list li{ transition:transform 0.25s ease, background 0.25s ease; }
+.contact-list li:hover{ transform:translateX(6px); background:rgba(216,31,38,0.06); }
+.contact-list .spark{ transition:transform 0.3s ease; }
+.contact-list li:hover .spark{ transform:rotate(90deg) scale(1.15); }
+
+/* form kontak terangkat dikit saat disentuh */
+.form-card{ transition:transform 0.3s ease, box-shadow 0.3s ease; }
+.form-card:hover{ transform:translateY(-4px); box-shadow:0 30px 60px rgba(0,0,0,0.5); }
+
+/* spark di footer muter pelan terus */
+footer .spark{ animation:sparkSpin 5s linear infinite; }
+
+/* barcode di kartu pengalaman kedip pelan */
+.barcode{ animation:barcodeFade 3s ease-in-out infinite; }
+@keyframes barcodeFade{
+  0%,100%{ opacity:1; }
+  50%{ opacity:0.7; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .logo .spark, .hero-tagbadge, .holo-badge, .skills-photo, .exp-year-tag, footer .spark, .barcode{
+    animation:none !important;
+  }
+}
