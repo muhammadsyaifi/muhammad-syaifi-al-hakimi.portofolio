@@ -615,6 +615,13 @@ nav a{
   .project-card:nth-child(3){ transform:rotate(-1deg); }
   .project-card:hover{ transform:rotate(0deg) translateY(-6px); }
   .project-card .spark{ width:26px; color:var(--accent); }
+  .project-thumb{
+    width:100%;
+    max-height:45%;
+    object-fit:cover;
+    border-radius:6px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.3);
+  }
   .project-card b{ font-family:var(--font-display); font-size:1.1rem; color:var(--ink); letter-spacing:0.02em; }
   .project-card small{ font-family:var(--font-mono); font-size:0.68rem; }
   .project-card .tape{
