@@ -163,32 +163,36 @@
     revealEls.forEach(el => revealObserver.observe(el));
   })();
 
-  // ===== EFEK TILT: foto di bagian Tentang miring mengikuti posisi kursor =====
+  // ===== EFEK TILT: foto di bagian Tentang miring + sedikit membesar mengikuti posisi kursor =====
   (function initPhotoTilt(){
     const card = document.getElementById('lanyardCard');
-    if (!card) return;
+    const wrap = document.querySelector('.id-card'); // area gerak diperluas ke seluruh kartu ID, bukan cuma foto
+    if (!card || !wrap) return;
 
     // Di layar sentuh tidak ada kursor yang bergerak bebas, jadi efek ini
     // dilewati supaya tidak mengganggu (dan tetap ringan performanya).
     const isTouchOnly = window.matchMedia('(hover: none)').matches;
     if (isTouchOnly) return;
 
-    const maxTilt = 14; // derajat, seberapa jauh kartu boleh miring
+    const maxTilt = 20; // derajat, seberapa jauh foto boleh miring (diperbesar biar lebih terasa "hidup")
 
     function handleMove(e){
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const px = x / rect.width;  // 0..1
-      const py = y / rect.height; // 0..1
+      const px = x / rect.width;
+      const py = y / rect.height;
 
-      const ry = (px - 0.5) * maxTilt * 2;   // kiri/kanan -> rotateY
-      const rx = (0.5 - py) * maxTilt * 2;   // atas/bawah -> rotateX
+      const cpx = Math.min(Math.max(px, -0.3), 1.3);
+      const cpy = Math.min(Math.max(py, -0.3), 1.3);
+
+      const ry = (cpx - 0.5) * maxTilt * 2;   // kiri/kanan -> rotateY
+      const rx = (0.5 - cpy) * maxTilt * 2;   // atas/bawah -> rotateX
 
       card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
       card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
-      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
-      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      card.style.setProperty('--mx', (Math.min(Math.max(px,0),1) * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (Math.min(Math.max(py,0),1) * 100).toFixed(1) + '%');
       card.classList.add('tilting');
     }
 
@@ -198,8 +202,85 @@
       card.classList.remove('tilting');
     }
 
-    card.addEventListener('mousemove', handleMove);
-    card.addEventListener('mouseleave', resetTilt);
+    // Digantungkan ke seluruh kartu ID (foto + teks) supaya lebih mudah dipicu,
+    // bukan cuma saat kursor tepat di atas foto.
+    wrap.addEventListener('mousemove', handleMove);
+    wrap.addEventListener('mouseleave', resetTilt);
+  })();
+
+  // ===== EFEK TILT RINGAN: kartu project & pengalaman miring dikit mengikuti kursor =====
+  (function initCardTilt(){
+    const isTouchOnly = window.matchMedia('(hover: none)').matches;
+    if (isTouchOnly) return;
+
+    const tiltTargets = document.querySelectorAll('.project-card, .exp-card, .tech-item');
+    if (!tiltTargets.length) return;
+
+    const maxTilt = 8;
+
+    tiltTargets.forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const ry = (px - 0.5) * maxTilt * 2;
+        const rx = (0.5 - py) * maxTilt * 2;
+        el.style.setProperty('--card-rx', rx.toFixed(2) + 'deg');
+        el.style.setProperty('--card-ry', ry.toFixed(2) + 'deg');
+        el.classList.add('card-tilting');
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.classList.remove('card-tilting');
+        el.style.setProperty('--card-rx', '0deg');
+        el.style.setProperty('--card-ry', '0deg');
+      });
+    });
+  })();
+
+  // ===== PARALLAX HALUS DI HERO: elemen bergeser tipis mengikuti kursor =====
+  (function initHeroParallax(){
+    const hero = document.querySelector('.hero');
+    const isTouchOnly = window.matchMedia('(hover: none)').matches;
+    if (!hero || isTouchOnly) return;
+
+    const layers = [
+      { el: hero.querySelector('.hero-title'), strength: 10 },
+      { el: hero.querySelector('.sparkle-cluster'), strength: 26 },
+      { el: hero.querySelector('.tag-row'), strength: 6 }
+    ].filter(l => l.el);
+
+    if (!layers.length) return;
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+
+      layers.forEach(({ el, strength }) => {
+        el.style.transform = `translate(${(px * strength).toFixed(1)}px, ${(py * strength).toFixed(1)}px)`;
+      });
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      layers.forEach(({ el }) => { el.style.transform = ''; });
+    });
+  })();
+
+  // ===== EFEK MAGNET: tombol sedikit "tertarik" ke arah kursor saat didekati =====
+  (function initMagneticButtons(){
+    const isTouchOnly = window.matchMedia('(hover: none)').matches;
+    if (isTouchOnly) return;
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${(x * 0.18).toFixed(1)}px, ${(y * 0.35).toFixed(1)}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
   })();
 
   // ===== ANIMASI BAR SKILL: bar terisi dari 0 ke persentase aslinya
