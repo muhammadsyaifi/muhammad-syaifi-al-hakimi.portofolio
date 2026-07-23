@@ -662,7 +662,8 @@ nav a{
   .exp-foot span{ font-family:var(--font-mono); font-size:0.68rem; color:#7d7666; text-transform:uppercase; }
 
   /* ===== PROJECT ===== */
-  .project-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 320px)); gap:28px; justify-content:center; }
+  .project-grid{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; }
+  .project-grid .project-card{ flex:0 1 300px; width:300px; }
   .project-card{
     position:relative;
     background:var(--paper);
@@ -680,7 +681,6 @@ nav a{
   .project-card:nth-child(2){ transform:rotate(1.5deg); }
   .project-card:nth-child(3){ transform:rotate(-1deg); }
   .project-card:hover{ transform:rotate(0deg) translateY(-6px); }
-  .project-card .spark{ width:26px; color:var(--accent); }
   .project-thumb{
     width:100%;
     max-height:45%;
