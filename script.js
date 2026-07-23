@@ -138,45 +138,8 @@
     revealEls.forEach(el => revealObserver.observe(el));
   })();
 
-  // ===== HOLOGRAM TILT: efek foil/hologram pada foto profil mengikuti gerakan mouse =====
-  (function initHoloTilt(){
-    const card = document.getElementById('lanyardCard');
-    if (!card) return;
-
-    const canHover = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!canHover || reduceMotion) return;
-
-    const shine = document.createElement('div');
-    shine.className = 'holo-shine';
-    card.appendChild(shine);
-
-    const MAX_TILT = 16; // derajat kemiringan maksimum ke tiap sisi
-
-    function onMove(e){
-      const rect = card.getBoundingClientRect();
-      const relX = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-      const relY = Math.min(Math.max((e.clientY - rect.top) / rect.height, 0), 1);
-
-      const rotY = (relX - 0.5) * MAX_TILT * 2;
-      const rotX = -(relY - 0.5) * MAX_TILT * 2;
-
-      card.classList.add('holo-tilting', 'holo-active');
-      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03,1.03,1.03)`;
-      shine.style.backgroundPosition = `${relX * 100}% ${relY * 100}%`;
-      shine.style.setProperty('--gx', `${relX * 100}%`);
-      shine.style.setProperty('--gy', `${relY * 100}%`);
-    }
-
-    function onLeave(){
-      card.classList.remove('holo-tilting');
-      card.classList.remove('holo-active');
-      card.style.transform = '';
-    }
-
-    card.addEventListener('mousemove', onMove);
-    card.addEventListener('mouseleave', onLeave);
-  })();
+  // Efek hologram/tilt pada foto profil sudah dihapus atas permintaan —
+  // foto sekarang ditampilkan polos tanpa animasi miring/kilau saat mouse bergerak.
 
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');

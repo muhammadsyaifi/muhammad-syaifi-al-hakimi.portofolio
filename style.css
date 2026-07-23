@@ -402,43 +402,8 @@ nav a{
   }
   .id-photo-fallback.show{ display:flex; }
 
-  /* ===== HOLOGRAM: efek foil/hologram pada foto profil mengikuti gerakan mouse ===== */
-  .id-photo{
-    perspective:1400px;
-    transform-style:preserve-3d;
-    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
-    will-change:transform;
-  }
-  .id-photo.holo-tilting{ transition:transform .05s linear, box-shadow .05s linear; }
-  .id-photo.holo-active{ box-shadow:0 18px 40px rgba(0,0,0,0.4); }
-  .holo-shine{
-    position:absolute; inset:0;
-    background-image:linear-gradient(115deg,
-      transparent 20%,
-      rgba(255,105,180,.55) 32%,
-      rgba(255,221,87,.55) 42%,
-      rgba(120,255,180,.55) 52%,
-      rgba(87,190,255,.55) 62%,
-      rgba(200,120,255,.55) 72%,
-      transparent 84%);
-    background-size:220% 220%;
-    background-position:50% 50%;
-    mix-blend-mode:color-dodge;
-    opacity:0;
-    transition:opacity .35s ease;
-    pointer-events:none;
-    border-radius:inherit;
-  }
-  .holo-shine::after{
-    content:"";
-    position:absolute; inset:0;
-    background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.55), transparent 45%);
-    mix-blend-mode:overlay;
-  }
-  .id-photo.holo-active .holo-shine{ opacity:.65; }
-  @media (prefers-reduced-motion: reduce){
-    .holo-shine{ display:none; }
-  }
+  /* Efek hologram/tilt (miring + kilau warna-warni mengikuti mouse) sudah
+     dihapus — foto sekarang tampil polos/statis di dalam kartu. */
 
   .id-name{ font-size:clamp(1.8rem, 3vw, 2.6rem); line-height:0.95; margin-bottom:10px; }
   .id-role{ font-family:var(--font-body); font-size:0.98rem; color:#3c382f; max-width:460px; margin-bottom:22px; }
