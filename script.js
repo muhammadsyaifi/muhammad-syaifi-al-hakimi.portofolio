@@ -17,6 +17,54 @@
     requestAnimationFrame(tick);
   })();
 
+  // ===== MUAT FOTO PROFIL (dengan fallback) =====
+  // Kenapa ini dibutuhkan: sebelumnya foto dimuat langsung lewat atribut
+  // src="assets/foto-profil.jpg" + onload/onerror inline di HTML. Ini rapuh
+  // karena banyak hosting (GitHub Pages, Netlify, Vercel, dll) berjalan di
+  // server Linux yang case-sensitive terhadap nama file — kalau file aslinya
+  // "Foto-Profil.JPG" atau ".jpeg", di PC/laptop (Windows/Mac = case-insensitive,
+  // atau saat dites lewat file:// lokal) foto tetap muncul, tapi begitu situs
+  // di-deploy dan dibuka dari HP, request gagal (404) sehingga foto hilang.
+  //
+  // Solusinya: coba beberapa kemungkinan nama file/ekstensi berurutan.
+  // Kalau SEMUA gagal, baru tampilkan avatar inisial sebagai fallback,
+  // supaya kartu profil tidak terlihat kosong di perangkat manapun.
+  (function loadProfilePhoto(){
+    const img = document.getElementById('profilePhoto');
+    const fallback = document.getElementById('profilePhotoFallback');
+    if (!img) return;
+
+    // GANTI/tambahkan path di sini jika nama file foto Anda berbeda.
+    // Urutan dicoba dari atas ke bawah.
+    const candidates = [
+      'assets/foto-profil.jpg',
+      'assets/foto-profil.jpeg',
+      'assets/foto-profil.png',
+      'assets/foto-profil.JPG',
+      'assets/foto-profil.PNG',
+      'assets/Foto-Profil.jpg',
+      'assets/Foto-Profil.JPG'
+    ];
+
+    function tryLoad(i){
+      if (i >= candidates.length) {
+        console.warn('[Foto Profil] Semua kandidat file gagal dimuat, menampilkan fallback avatar. Path yang dicoba:', candidates);
+        if (fallback) fallback.classList.add('show');
+        return;
+      }
+      const testImg = new Image();
+      testImg.onload = () => {
+        img.src = candidates[i];
+        img.style.display = 'block';
+        if (fallback) fallback.classList.remove('show');
+      };
+      testImg.onerror = () => tryLoad(i + 1);
+      testImg.src = candidates[i];
+    }
+
+    tryLoad(0);
+  })();
+
   // ===== Sinkronkan tinggi header asli ke variabel CSS --header-h =====
   // Ini mencegah navbar (fixed) menutupi tulisan di Beranda, karena tinggi
   // header bisa berubah-ubah (menu wrap, font beda, ukuran layar, dll).

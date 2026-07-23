@@ -146,7 +146,8 @@
       <!-- GANTI DENGAN FOTO ANDA: taruh file foto Anda di folder assets/ dengan nama foto-profil.jpg (atau ubah nama file di src). Foto akan muncul otomatis begitu file-nya ada. -->
       <!-- Sisi belakang kartu (saat dibalik) pakai assets/lanyard-card-back.png -->
       <div class="id-photo" id="lanyardCard">
-        <img class="card-photo" src="assets/foto-profil.jpg" alt="Foto Muhammad Syaifi Al Hakimi" draggable="false" onload="this.style.display='block'" onerror="this.style.display='none'">
+        <img class="card-photo" id="profilePhoto" alt="Foto Muhammad Syaifi Al Hakimi" draggable="false">
+        <div class="id-photo-fallback" id="profilePhotoFallback" aria-hidden="true">MSAH</div>
       </div>
 
       <div>
