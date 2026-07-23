@@ -163,6 +163,68 @@
     revealEls.forEach(el => revealObserver.observe(el));
   })();
 
+  // ===== EFEK TILT: foto di bagian Tentang miring mengikuti posisi kursor =====
+  (function initPhotoTilt(){
+    const card = document.getElementById('lanyardCard');
+    if (!card) return;
+
+    // Di layar sentuh tidak ada kursor yang bergerak bebas, jadi efek ini
+    // dilewati supaya tidak mengganggu (dan tetap ringan performanya).
+    const isTouchOnly = window.matchMedia('(hover: none)').matches;
+    if (isTouchOnly) return;
+
+    const maxTilt = 14; // derajat, seberapa jauh kartu boleh miring
+
+    function handleMove(e){
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const px = x / rect.width;  // 0..1
+      const py = y / rect.height; // 0..1
+
+      const ry = (px - 0.5) * maxTilt * 2;   // kiri/kanan -> rotateY
+      const rx = (0.5 - py) * maxTilt * 2;   // atas/bawah -> rotateX
+
+      card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+      card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      card.classList.add('tilting');
+    }
+
+    function resetTilt(){
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+      card.classList.remove('tilting');
+    }
+
+    card.addEventListener('mousemove', handleMove);
+    card.addEventListener('mouseleave', resetTilt);
+  })();
+
+  // ===== ANIMASI BAR SKILL: bar terisi dari 0 ke persentase aslinya
+  // begitu bagian Keahlian terlihat di layar =====
+  (function initSkillBars(){
+    const bars = document.querySelectorAll('.tech-bar');
+    if (!bars.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      bars.forEach(bar => bar.classList.add('in-view'));
+      return;
+    }
+
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    bars.forEach(bar => barObserver.observe(bar));
+  })();
+
   // Efek hologram/tilt pada foto profil sudah dihapus atas permintaan —
   // foto sekarang ditampilkan polos tanpa animasi miring/kilau saat mouse bergerak.
 
