@@ -768,8 +768,8 @@ nav a{
   /* ===== RESPONSIVE ===== */
   @media (max-width:900px){
     .id-card{ grid-template-columns:1fr; }
-    .id-photo{ max-width:220px; }
-    .lanyard-zone{ max-width:220px; margin:0 auto; }
+    .id-photo{ max-width:280px; }
+    .lanyard-zone{ max-width:280px; margin:0 auto; }
     .project-grid{ grid-template-columns:1fr; }
     .contact-wrap{ grid-template-columns:1fr; }
     .exp-wrap{ grid-template-columns:1fr; }
@@ -794,12 +794,12 @@ nav a{
       margin-right:12px;
       gap:8px;
     }
-    .music-btn{ width:32px; height:32px; }
-    .music-icon{ width:13px; height:13px; }
+    .music-btn{ width:38px; height:38px; }
+    .music-icon{ width:14px; height:14px; }
 
     /* tombol bahasa jadi bulat, hanya menampilkan bahasa yang aktif; tap untuk ganti */
     .lang-switch{
-      width:34px; height:34px;
+      width:42px; height:42px;
       padding:0;
       border-radius:50%;
       justify-content:center;
@@ -812,7 +812,8 @@ nav a{
       width:100%; height:100%;
       padding:0;
       margin:0;
-      font-size:0.62rem;
+      font-size:0.85rem;
+      font-weight:700;
       line-height:1;
       display:flex;
       align-items:center;
