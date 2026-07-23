@@ -46,23 +46,48 @@
       'assets/Foto-Profil.JPG'
     ];
 
-    function tryLoad(i){
-      if (i >= candidates.length) {
-        console.warn('[Foto Profil] Semua kandidat file gagal dimuat, menampilkan fallback avatar. Path yang dicoba:', candidates);
-        if (fallback) fallback.classList.add('show');
-        return;
-      }
-      const testImg = new Image();
-      testImg.onload = () => {
-        img.src = candidates[i];
-        img.style.display = 'block';
-        if (fallback) fallback.classList.remove('show');
-      };
-      testImg.onerror = () => tryLoad(i + 1);
-      testImg.src = candidates[i];
+    // Dulu: kandidat dicoba SATU PER SATU (nunggu satu gagal baru lanjut ke berikutnya).
+    // Di koneksi lambat ini bikin foto (atau fallback-nya) telat muncul lama sekali,
+    // bahkan kadang terlihat "hilang total" padahal sebenarnya masih coba-coba.
+    // Sekarang: semua kandidat dicoba SEKALIGUS (paralel), siapa cepat dia dipakai,
+    // tapi tetap mengutamakan kandidat dengan prioritas paling atas kalau beberapa
+    // berhasil hampir bersamaan.
+    let resolved = false;
+    let failedCount = 0;
+    let bestLoadedIndex = Infinity;
+
+    function applyPhoto(i, src){
+      if (resolved && i >= bestLoadedIndex) return; // sudah ada kandidat lebih prioritas terpasang
+      resolved = true;
+      bestLoadedIndex = i;
+      img.src = src;
+      img.style.display = 'block';
+      if (fallback) fallback.classList.remove('show');
     }
 
-    tryLoad(0);
+    // Fallback darurat: kalau dalam 3.5 detik belum ada satu pun yang berhasil,
+    // tampilkan avatar inisial dulu supaya kartu tidak terlihat kosong terlalu lama
+    // (kalau foto asli berhasil dimuat setelahnya, otomatis akan menggantikan fallback).
+    const emergencyTimer = setTimeout(() => {
+      if (!resolved && fallback) fallback.classList.add('show');
+    }, 3500);
+
+    candidates.forEach((src, i) => {
+      const testImg = new Image();
+      testImg.onload = () => {
+        clearTimeout(emergencyTimer);
+        applyPhoto(i, src);
+      };
+      testImg.onerror = () => {
+        failedCount++;
+        if (failedCount === candidates.length && !resolved) {
+          clearTimeout(emergencyTimer);
+          console.warn('[Foto Profil] Semua kandidat file gagal dimuat, menampilkan fallback avatar. Path yang dicoba:', candidates);
+          if (fallback) fallback.classList.add('show');
+        }
+      };
+      testImg.src = src;
+    });
   })();
 
   // ===== Sinkronkan tinggi header asli ke variabel CSS --header-h =====

@@ -376,9 +376,11 @@ nav a{
   .id-photo{
     position:relative;
     aspect-ratio:687/1000;
+    min-height:220px; /* jaga-jaga kalau browser lama tak dukung aspect-ratio */
     border-radius:14px;
     overflow:hidden;
     box-shadow:0 10px 26px rgba(0,0,0,0.35);
+    background:linear-gradient(150deg, var(--paper-2), var(--paper));
   }
   .card-photo{
     position:absolute; inset:0;
