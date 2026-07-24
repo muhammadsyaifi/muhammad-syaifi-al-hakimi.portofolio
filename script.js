@@ -283,27 +283,39 @@
     });
   })();
 
-  // ===== ANIMASI BAR SKILL: bar terisi dari 0 ke persentase aslinya
-  // begitu bagian Keahlian terlihat di layar =====
-  (function initSkillBars(){
-    const bars = document.querySelectorAll('.tech-bar');
-    if (!bars.length) return;
+  // ===== POPUP KEAHLIAN: sentuh/klik kartu skill untuk menampilkan level kemampuan
+  // (Mahir / Menengah / Dasar) dengan warna sesuai levelnya =====
+  (function initSkillPopups(){
+    const items = document.querySelectorAll('.tech-item[data-level]');
+    if (!items.length) return;
 
-    if (!('IntersectionObserver' in window)) {
-      bars.forEach(bar => bar.classList.add('in-view'));
-      return;
-    }
-
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          barObserver.unobserve(entry.target);
+    function closeAll(except){
+      items.forEach(el => {
+        if (el !== except){
+          el.classList.remove('popup-open');
+          el.setAttribute('aria-expanded', 'false');
         }
       });
-    }, { threshold: 0.3 });
+    }
 
-    bars.forEach(bar => barObserver.observe(bar));
+    items.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = el.classList.contains('popup-open');
+        closeAll(el);
+        el.classList.toggle('popup-open', !isOpen);
+        el.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+
+    document.addEventListener('click', () => closeAll(null));
   })();
 
   // Efek hologram/tilt pada foto profil sudah dihapus atas permintaan —
